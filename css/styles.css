@@ -746,7 +746,9 @@ img {
 }
 
 .flex:hover .info ,
-.flex:hover .overlay-portfolio::before {
+.flex:focus .info,
+.flex:hover .overlay-portfolio::before,
+.flex:focus .overlay-portfolio::before {
   opacity: 1;
   transform: translateY(0);
 }
