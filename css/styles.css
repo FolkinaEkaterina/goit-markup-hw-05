@@ -132,6 +132,8 @@ body {
   display: inline-block;
   margin-right: 10px;
   fill: currentColor;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-contacts:hover {
@@ -158,7 +160,11 @@ body {
 .item-contacts .link {
   padding-bottom: 32px;
   padding-top: 32px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
 
 /* nav and contacts hover and focus */
 
@@ -170,6 +176,23 @@ body {
   color: var(--accent-color);
 }
 
+.nav.current {
+  position: relative;
+}
+
+.nav.current::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+}
 /* main index.html */
 /* hero */
 
@@ -228,6 +251,8 @@ body {
   letter-spacing: 0.06em;
   display: inline-block;
   cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover,
@@ -424,6 +449,8 @@ img {
   padding: 12px;
   width: 44px;
   height: 44px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-link:hover,
@@ -462,6 +489,8 @@ img {
   width: 170px;
   height: 92px;
   padding: 16px 32px;
+
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-link:hover,
@@ -493,6 +522,8 @@ img {
   color: var(--contacts-footer-color);
 
   text-decoration: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-list .ad-res:hover,
@@ -551,6 +582,8 @@ img {
   padding: 12px;
   width: 44px;
   height: 44px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .i-link:hover,
@@ -582,6 +615,8 @@ img {
   text-align: center;
 
   cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms  cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
@@ -639,6 +674,8 @@ img {
   color: currentColor;
 
   width: 370px;
+
+  transition: box-shadow  250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .flex:hover,
@@ -673,6 +710,11 @@ img {
 
 /* portfolio overlay */
 
+.overlay-portfolio {
+  position: relative;
+  overflow: hidden;
+}
+
 .info {
   color: var(--white-color);
 
@@ -682,38 +724,33 @@ img {
   letter-spacing: 0.03em;
 
   padding: 63px 24px;
-
-  top: 0;
-  left: 0;
-  position: absolute;
-  opacity: 0;
-}
-
-.flex:hover .info {
-  opacity: 1;
-}
-
-.flex:hover .overlay-portfolio::before {
-  opacity: 1;
-}
-
-.overlay-portfolio {
-  position: relative;
 }
 
 .overlay-portfolio::before {
   display: inline-block;
-  position: absolute;
   content: '';
 
   background-color: var(--info-bg-color);
 
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+}
 
+.overlay-portfolio::before,
+.info {
+  position: absolute;
+
+  top: 0;
+  left: 0;
   opacity: 0;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flex:hover .info ,
+.flex:hover .overlay-portfolio::before {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* modal window */
